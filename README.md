@@ -47,8 +47,6 @@ Edit your `config.php` and add the following lines:
 
 After you have configured the plugin, you should be able to send emails for example using the dreamform plugin or when you use the 2FA option for the panel.
 
-```php
-
 ## Usefull links
 
 -   [PHPMailer Wiki](https://github.com/PHPMailer/PHPMailer/wiki/)

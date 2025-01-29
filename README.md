@@ -35,6 +35,7 @@ Edit your `config.php` and add the following lines:
 
 ```php
 'nerdcel.kirby-oauth2-email' => [
+    'enabled' => true, // default: false
     'email' => 'example@your-provider.tdl',
     'service' => 'azure', // google, microsoft, yahoo, azure
     'client-id' => 'your-client-id',

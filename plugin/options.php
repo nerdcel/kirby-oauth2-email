@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'enabled' => false,
     'email' => '',
     'service' => '',
     'client-id' => '',

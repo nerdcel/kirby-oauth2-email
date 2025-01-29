@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "php": ">=8.3",
         "getkirby/composer-installer": "^1.1",
         "phpmailer/phpmailer": "v6.9.2",
         "decomplexity/sendoauth2": "^v4.1.0",

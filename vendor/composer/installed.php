@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'nerdcel/kirby-oauth2-email',
-        'pretty_version' => '0.0.1',
-        'version' => '0.0.1.0',
+        'pretty_version' => '0.0.1-beta-1',
+        'version' => '0.0.1.0-beta1',
         'reference' => NULL,
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -215,8 +215,8 @@
             'dev_requirement' => false,
         ),
         'nerdcel/kirby-oauth2-email' => array(
-            'pretty_version' => '0.0.1',
-            'version' => '0.0.1.0',
+            'pretty_version' => '0.0.1-beta-1',
+            'version' => '0.0.1.0-beta1',
             'reference' => NULL,
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',

@@ -3,7 +3,6 @@
     "description": "Kirby Plugin to setup OAuth for SMTP Mail (e.g. Outlook, Gmail, Yahoo, etc.)",
     "license": "MIT",
     "type": "kirby-plugin",
-    "version": "0.0.1-beta-2",
     "authors": [
         {
             "name": "Marcel Hieke",

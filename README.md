@@ -25,7 +25,7 @@ Or download the [latest release](https://github.com/nerdcel/kirby-oauth2-email/r
 You need to configure your OAuth2 provider to allow the authentication of your users.
 You need to create an OAuth2 application and get the client ID and client secret. At this point, I assume you have a basic understanding of OAuth2 and how to setup your provider.
 
-You most likely need to provide a redirect URL, which is `https://your-site.tld/callback_path`.
+You most likely need to provide a redirect URL, which is `https://your-site.tld/callback-path`.
 If this step is done, you can configure the plugin using the refresh token, client ID, and client secret (tenantId e.g. Azure).
 Once this is done you can configure the plugin.
 
@@ -35,7 +35,7 @@ Edit your `config.php` and add the following lines:
 
 ```php
 'nerdcel.kirby-oauth2-email' => [
-    'callback_path' => 'callback_path', // default: 'email/oauth2'
+    'callback-path' => 'callback-path', // default: 'email/oauth2'
     'enabled' => true, // default: false
     'email' => 'example@your-provider.tdl',
     'service' => 'azure', // google, microsoft, yahoo, azure

@@ -108,7 +108,7 @@ class GetToken
             $tenantId = $session->get('tenantId');
         }
 
-        $redirectUri = url(option('nerdcel.kirby-oauth2-email.callback_path'));
+        $redirectUri = url(option('nerdcel.kirby-oauth2-email.callback-path'));
 
         $params = [
             'clientId' => $clientId,

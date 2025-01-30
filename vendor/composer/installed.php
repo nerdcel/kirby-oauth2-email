@@ -3,7 +3,7 @@
         'name' => 'nerdcel/kirby-oauth2-email',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '774a02cd12fac62b60b01bcf56f3328b81826001',
+        'reference' => '7e6f40b9d78fa06df9c0d05c498dd024cf26d2ff',
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -217,7 +217,7 @@
         'nerdcel/kirby-oauth2-email' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '774a02cd12fac62b60b01bcf56f3328b81826001',
+            'reference' => '7e6f40b9d78fa06df9c0d05c498dd024cf26d2ff',
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

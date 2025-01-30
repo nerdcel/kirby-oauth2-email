@@ -1,6 +1,6 @@
 <?php
 
-use Nerdcel\OAuth2Mail\OAuth2EMail;
+use Nerdcel\OAuth2Email\OAuth2EMail;
 
 return [
     'email' => function ($kirby, $props, $debug) {

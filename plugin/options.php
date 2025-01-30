@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'callback-uri' => 'email/oauth2',
     'enabled' => false,
     'email' => '',
     'service' => '',

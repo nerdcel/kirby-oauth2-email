@@ -1,4 +1,5 @@
 # files of Composer dependencies that are not needed for the plugin
+/kirby
 /vendor/**/.*
 /vendor/**/*.json
 /vendor/**/*.txt

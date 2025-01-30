@@ -27,6 +27,11 @@
     "require-dev": {
         "getkirby/cms": "^4.5.0"
     },
+    "autoload": {
+        "psr-4": {
+            "Nerdcel\\OAuth2Email\\": "src/classes"
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "allow-plugins": {

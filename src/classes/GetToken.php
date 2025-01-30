@@ -1,6 +1,6 @@
 <?php
 
-namespace Nerdcel\OAuth2Mail;
+namespace Nerdcel\OAuth2Email;
 
 /**
  * Aliases for League Provider Classes
@@ -108,7 +108,7 @@ class GetToken
             $tenantId = $session->get('tenantId');
         }
 
-        $redirectUri = url('email/oauth2');
+        $redirectUri = url(option('nerdcel.kirby-oauth2-email.callback_path'));
 
         $params = [
             'clientId' => $clientId,

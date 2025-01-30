@@ -1,6 +1,6 @@
 <?php
 
-namespace Nerdcel\OAuth2Mail;
+namespace Nerdcel\OAuth2Email;
 
 use Closure;
 use Kirby\Email\Email;

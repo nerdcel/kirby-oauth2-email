@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "972fb3c850a022f2916b75a615b08fc3",
+    "content-hash": "9d254f6171984ab6a6474a88bbc3f5c7",
     "packages": [
         {
             "name": "decomplexity/sendoauth2",

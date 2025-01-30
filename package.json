@@ -1,6 +1,6 @@
 {
   "name": "kirby-oauth2-email",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "[![Kirby 4](https://img.shields.io/badge/kirby-4-fb654f.svg)](https://getkirby.com) [![Release](https://img.shields.io/github/v/release/nerdcel/kirby-oauth2-email)](https://github.com/nerdcel/kirby-oauth2-email/releases) [![License](https://img.shields.io/github/license/nerdcel/kirby-oauth2-email)](https://github.com/nerdcel/kirby-oauth2-email/blob/main/LICENSE)",
   "main": "index.js",
   "scripts": {

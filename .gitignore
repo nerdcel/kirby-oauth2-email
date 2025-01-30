@@ -34,3 +34,4 @@
 /.sqlite
 /~
 /.ddev
+/node_modules

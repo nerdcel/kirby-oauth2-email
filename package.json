@@ -1,0 +1,24 @@
+{
+  "name": "kirby-oauth2-email",
+  "version": "0.0.1",
+  "description": "[![Kirby 4](https://img.shields.io/badge/kirby-4-fb654f.svg)](https://getkirby.com) [![Release](https://img.shields.io/github/v/release/nerdcel/kirby-oauth2-email)](https://github.com/nerdcel/kirby-oauth2-email/releases) [![License](https://img.shields.io/github/license/nerdcel/kirby-oauth2-email)](https://github.com/nerdcel/kirby-oauth2-email/blob/main/LICENSE)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "husky": "^6.0.0",
+    "standard-version": "^9.2.0"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0"
+  }
+}

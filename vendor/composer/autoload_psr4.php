@@ -27,7 +27,7 @@ return array(
     'League\\OAuth2\\Client\\' => array($vendorDir . '/league/oauth2-client/src', $vendorDir . '/league/oauth2-google/src'),
     'League\\ColorExtractor\\' => array($vendorDir . '/league/color-extractor/src'),
     'Laminas\\Escaper\\' => array($vendorDir . '/laminas/laminas-escaper/src'),
-    'Kirby\\' => array($baseDir . '/kirby/src', $vendorDir . '/getkirby/composer-installer/src'),
+    'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src', $baseDir . '/kirby/src'),
     'Hayageek\\OAuth2\\Client\\' => array($vendorDir . '/hayageek/oauth2-yahoo/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),

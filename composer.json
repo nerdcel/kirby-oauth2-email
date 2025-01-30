@@ -12,7 +12,6 @@
     "require": {
         "php": ">=8.3",
         "getkirby/composer-installer": "^1.1",
-        "phpmailer/phpmailer": "v6.9.2",
         "decomplexity/sendoauth2": "^v4.1.0",
         "ext-mbstring": "*",
         "ext-openssl": "*",
@@ -25,7 +24,8 @@
         "symfony/polyfill-mbstring": "v1.31.0"
     },
     "require-dev": {
-        "getkirby/cms": "^4.5.0"
+        "getkirby/cms": "^4.5.0",
+        "phpmailer/phpmailer": "^v6.9.3"
     },
     "autoload": {
         "psr-4": {

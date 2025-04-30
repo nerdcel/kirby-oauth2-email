@@ -59,6 +59,7 @@ class CloudHealthcare extends \Google\Service
   public $projects_locations_datasets_dicomStores_studies_series_instances_frames;
   public $projects_locations_datasets_fhirStores;
   public $projects_locations_datasets_fhirStores_fhir;
+  public $projects_locations_datasets_fhirStores_operations;
   public $projects_locations_datasets_hl7V2Stores;
   public $projects_locations_datasets_hl7V2Stores_messages;
   public $projects_locations_datasets_operations;
@@ -1327,6 +1328,10 @@ class CloudHealthcare extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'viewport' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],
           ]
@@ -1367,6 +1372,10 @@ class CloudHealthcare extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'viewport' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],
           ]
@@ -1396,6 +1405,32 @@ class CloudHealthcare extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'bulk-export-group' => [
+              'path' => 'v1/{+name}/$export',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                '_since' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                '_type' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'organizeOutputBy' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'outputFormat' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'create' => [
@@ -1707,6 +1742,28 @@ class CloudHealthcare extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'bulk-export' => [
+              'path' => 'v1/{+name}/fhir/$export',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                '_since' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                '_type' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'outputFormat' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'capabilities' => [
               'path' => 'v1/{+name}/fhir/metadata',
               'httpMethod' => 'GET',
@@ -1879,6 +1936,36 @@ class CloudHealthcare extends \Google\Service
                 ],
               ],
             ],'vread' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_datasets_fhirStores_operations = new CloudHealthcare\Resource\ProjectsLocationsDatasetsFhirStoresOperations(
+        $this,
+        $this->serviceName,
+        'operations',
+        [
+          'methods' => [
+            'delete-fhir-operation' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get-fhir-operation-status' => [
               'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => [

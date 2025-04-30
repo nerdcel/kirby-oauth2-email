@@ -25,6 +25,12 @@ use Greew\OAuth2\Client\Provider\Azure;
 
 class OAuth2EMail extends Email
 {
+    public function __construct(array $props = [], bool $debug = false)
+    {
+        logIt('OAuth2Email: ' . json_encode($props));
+        parent::__construct($props, $debug);
+    }
+
     /**
      * Sends email via PHPMailer library
      *
@@ -36,25 +42,31 @@ class OAuth2EMail extends Email
 
         // set sender's address
         $mailer->setFrom($this->from(), $this->fromName() ?? '');
+        logIt('Set from: ' . $this->from() . ' name: ' . $this->fromName());
 
         // optional reply-to address
         if ($replyTo = $this->replyTo()) {
             $mailer->addReplyTo($replyTo, $this->replyToName() ?? '');
         }
+        logIt('Set reply-to: ' . $replyTo . ' name: ' . $this->replyToName());
 
         // add (multiple) recipient, CC & BCC addresses
         foreach ($this->to() as $email => $name) {
             $mailer->addAddress($email, $name ?? '');
+            logIt('Set to: ' . $email . ' name: ' . $name);
         }
         foreach ($this->cc() as $email => $name) {
             $mailer->addCC($email, $name ?? '');
+            logIt('Set cc: ' . $email . ' name: ' . $name);
         }
         foreach ($this->bcc() as $email => $name) {
             $mailer->addBCC($email, $name ?? '');
+            logIt('Set bcc: ' . $email . ' name: ' . $name);
         }
 
         $mailer->Subject = $this->subject();
         $mailer->CharSet = 'UTF-8';
+        logIt('Set subject: ' . $this->subject());
 
         // set body according to html/text
         if ($this->isHtml()) {
@@ -72,6 +84,7 @@ class OAuth2EMail extends Email
 
         // Decide which service to use
         $service = option('nerdcel.kirby-oauth2-email.service');
+        logIt('Service: ' . $service);
 
         return match ($service) {
             'google' => $this->useGoogle($mailer, $debug),

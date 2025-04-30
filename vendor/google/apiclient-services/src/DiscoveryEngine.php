@@ -58,6 +58,7 @@ class DiscoveryEngine extends \Google\Service
   public $projects_locations_collections_dataStores_sessions_answers;
   public $projects_locations_collections_dataStores_siteSearchEngine;
   public $projects_locations_collections_dataStores_siteSearchEngine_operations;
+  public $projects_locations_collections_dataStores_siteSearchEngine_sitemaps;
   public $projects_locations_collections_dataStores_siteSearchEngine_targetSites;
   public $projects_locations_collections_dataStores_siteSearchEngine_targetSites_operations;
   public $projects_locations_collections_dataStores_suggestionDenyListEntries;
@@ -84,10 +85,12 @@ class DiscoveryEngine extends \Google\Service
   public $projects_locations_dataStores_sessions;
   public $projects_locations_dataStores_sessions_answers;
   public $projects_locations_dataStores_siteSearchEngine;
+  public $projects_locations_dataStores_siteSearchEngine_sitemaps;
   public $projects_locations_dataStores_siteSearchEngine_targetSites;
   public $projects_locations_dataStores_suggestionDenyListEntries;
   public $projects_locations_dataStores_userEvents;
   public $projects_locations_groundingConfigs;
+  public $projects_locations_identityMappingStores;
   public $projects_locations_identityMappingStores_operations;
   public $projects_locations_operations;
   public $projects_locations_rankingConfigs;
@@ -1222,6 +1225,51 @@ class DiscoveryEngine extends \Google\Service
                 'pageToken' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_collections_dataStores_siteSearchEngine_sitemaps = new DiscoveryEngine\Resource\ProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps(
+        $this,
+        $this->serviceName,
+        'sitemaps',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/sitemaps',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'fetch' => [
+              'path' => 'v1/{+parent}/sitemaps:fetch',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'matcher.urisMatcher.uris' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
                 ],
               ],
             ],
@@ -2848,6 +2896,51 @@ class DiscoveryEngine extends \Google\Service
           ]
         ]
     );
+    $this->projects_locations_dataStores_siteSearchEngine_sitemaps = new DiscoveryEngine\Resource\ProjectsLocationsDataStoresSiteSearchEngineSitemaps(
+        $this,
+        $this->serviceName,
+        'sitemaps',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/sitemaps',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'fetch' => [
+              'path' => 'v1/{+parent}/sitemaps:fetch',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'matcher.urisMatcher.uris' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                  'repeated' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->projects_locations_dataStores_siteSearchEngine_targetSites = new DiscoveryEngine\Resource\ProjectsLocationsDataStoresSiteSearchEngineTargetSites(
         $this,
         $this->serviceName,
@@ -3033,6 +3126,114 @@ class DiscoveryEngine extends \Google\Service
               'httpMethod' => 'POST',
               'parameters' => [
                 'groundingConfig' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
+    $this->projects_locations_identityMappingStores = new DiscoveryEngine\Resource\ProjectsLocationsIdentityMappingStores(
+        $this,
+        $this->serviceName,
+        'identityMappingStores',
+        [
+          'methods' => [
+            'create' => [
+              'path' => 'v1/{+parent}/identityMappingStores',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'cmekConfigName' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'disableCmek' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+                'identityMappingStoreId' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'delete' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'importIdentityMappings' => [
+              'path' => 'v1/{+identityMappingStore}:importIdentityMappings',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'identityMappingStore' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'v1/{+parent}/identityMappingStores',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'listIdentityMappings' => [
+              'path' => 'v1/{+identityMappingStore}:listIdentityMappings',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'identityMappingStore' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'purgeIdentityMappings' => [
+              'path' => 'v1/{+identityMappingStore}:purgeIdentityMappings',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'identityMappingStore' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

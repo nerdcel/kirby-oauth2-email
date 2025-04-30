@@ -21,10 +21,10 @@
         "league/oauth2-google": "^4.0.1",
         "psr/log": "^3.0.2",
         "thenetworg/oauth2-azure": "^v2.2.2",
-        "symfony/polyfill-mbstring": "v1.31.0"
+        "symfony/polyfill-mbstring": "v1.31.0",
+        "monolog/monolog": "^3.9"
     },
     "require-dev": {
-        "getkirby/cms": "^4.5.0",
         "phpmailer/phpmailer": "^v6.9.3"
     },
     "autoload": {

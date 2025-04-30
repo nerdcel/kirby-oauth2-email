@@ -389,6 +389,16 @@ class Aiplatform extends \Google\Service
                   'required' => true,
                 ],
               ],
+            ],'predict' => [
+              'path' => 'v1/{+endpoint}:predict',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'endpoint' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
             ],'streamGenerateContent' => [
               'path' => 'v1/{+model}:streamGenerateContent',
               'httpMethod' => 'POST',
@@ -474,6 +484,16 @@ class Aiplatform extends \Google\Service
               'httpMethod' => 'POST',
               'parameters' => [
                 'parent' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'evaluateDataset' => [
+              'path' => 'v1/{+location}:evaluateDataset',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'location' => [
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -5522,6 +5542,24 @@ class Aiplatform extends \Google\Service
                   'type' => 'string',
                 ],
               ],
+            ],'listCheckpoints' => [
+              'path' => 'v1/{+name}:listCheckpoints',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'name' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
             ],'listVersions' => [
               'path' => 'v1/{+name}:listVersions',
               'httpMethod' => 'GET',
@@ -9304,6 +9342,16 @@ class Aiplatform extends \Google\Service
                 'view' => [
                   'location' => 'query',
                   'type' => 'string',
+                ],
+              ],
+            ],'predict' => [
+              'path' => 'v1/{+endpoint}:predict',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'endpoint' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ],
               ],
             ],'streamGenerateContent' => [

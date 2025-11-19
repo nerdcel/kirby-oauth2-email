@@ -3,8 +3,10 @@
 namespace Nerdcel\OAuth2Email;
 
 use Closure;
+use GuzzleHttp\Exception\GuzzleException;
 use Kirby\Email\Email;
 use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\F;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -27,8 +29,28 @@ class OAuth2EMail extends Email
 {
     public function __construct(array $props = [], bool $debug = false)
     {
-        logIt('OAuth2Email: ' . json_encode($props));
+        logIt('OAuth2Email: '.json_encode($props));
         parent::__construct($props, $debug);
+    }
+
+    /**
+     * Use token from .oauth file if exists, otherwise use refresh token from config
+     * @return string
+     */
+    private function useToken(): string
+    {
+        $tokenFile = App::instance()->root('base').'/.oauth';
+        logIt('Using token file: '.$tokenFile);
+
+        if (file_exists($tokenFile)) {
+            $token = F::read($tokenFile);
+            logIt('Read token: '.$token);
+
+            return $token;
+        }
+
+        logIt('Token file not found, using config refresh token.');
+        return option('nerdcel.kirby-oauth2-email.refresh-token');
     }
 
     /**
@@ -42,31 +64,31 @@ class OAuth2EMail extends Email
 
         // set sender's address
         $mailer->setFrom($this->from(), $this->fromName() ?? '');
-        logIt('Set from: ' . $this->from() . ' name: ' . $this->fromName());
+        logIt('Set from: '.$this->from().' name: '.$this->fromName());
 
         // optional reply-to address
         if ($replyTo = $this->replyTo()) {
             $mailer->addReplyTo($replyTo, $this->replyToName() ?? '');
         }
-        logIt('Set reply-to: ' . $replyTo . ' name: ' . $this->replyToName());
+        logIt('Set reply-to: '.$replyTo.' name: '.$this->replyToName());
 
         // add (multiple) recipient, CC & BCC addresses
         foreach ($this->to() as $email => $name) {
             $mailer->addAddress($email, $name ?? '');
-            logIt('Set to: ' . $email . ' name: ' . $name);
+            logIt('Set to: '.$email.' name: '.$name);
         }
         foreach ($this->cc() as $email => $name) {
             $mailer->addCC($email, $name ?? '');
-            logIt('Set cc: ' . $email . ' name: ' . $name);
+            logIt('Set cc: '.$email.' name: '.$name);
         }
         foreach ($this->bcc() as $email => $name) {
             $mailer->addBCC($email, $name ?? '');
-            logIt('Set bcc: ' . $email . ' name: ' . $name);
+            logIt('Set bcc: '.$email.' name: '.$name);
         }
 
         $mailer->Subject = $this->subject();
         $mailer->CharSet = 'UTF-8';
-        logIt('Set subject: ' . $this->subject());
+        logIt('Set subject: '.$this->subject());
 
         // set body according to html/text
         if ($this->isHtml()) {
@@ -84,7 +106,7 @@ class OAuth2EMail extends Email
 
         // Decide which service to use
         $service = option('nerdcel.kirby-oauth2-email.service');
-        logIt('Service: ' . $service);
+        logIt('Service: '.$service);
 
         return match ($service) {
             'google' => $this->useGoogle($mailer, $debug),
@@ -120,21 +142,43 @@ class OAuth2EMail extends Email
                 'clientId' => option('nerdcel.kirby-oauth2-email.client-id'),
                 'tenantId' => option('nerdcel.kirby-oauth2-email.tenant-id'),
                 'clientSecret' => option('nerdcel.kirby-oauth2-email.client-secret'),
+                'accessType' => 'offline',
+            ]
+        );
+
+        $oauth = new OAuth(
+            [
+                'provider' => $provider,
+                'clientId' => option('nerdcel.kirby-oauth2-email.client-id'),
+                'clientSecret' => option('nerdcel.kirby-oauth2-email.client-secret'),
+                'refreshToken' => $this->useToken(),
+                'userName' => option('nerdcel.kirby-oauth2-email.email'),
             ]
         );
 
         //Pass the OAuth provider instance to PHPMailer
         $mailer->setOAuth(
-            new OAuth(
-                [
-                    'provider' => $provider,
-                    'clientId' => option('nerdcel.kirby-oauth2-email.client-id'),
-                    'clientSecret' => option('nerdcel.kirby-oauth2-email.client-secret'),
-                    'refreshToken' => option('nerdcel.kirby-oauth2-email.refresh-token'),
-                    'userName' => option('nerdcel.kirby-oauth2-email.email'),
-                ]
-            )
+            $oauth
         );
+
+        // Get new refresh token and save it in .oauth file
+        try {
+            $token = $provider->getAccessToken(
+                'refresh_token',
+                [
+                    'refresh_token' => $this->useToken(),
+                ]
+            );
+
+            $refreshToken = htmlspecialchars($token->getRefreshToken());
+
+            F::write(App::instance()->root('base').'/.oauth', $refreshToken);
+
+        } catch (\Exception $e) {
+            logIt('Error obtaining access token: '.$e->getMessage());
+        } catch (GuzzleException $e) {
+            logIt('Guzzle error obtaining access token: '.$e->getMessage());
+        }
 
         return $this->transportIt($mailer, $debug);
     }
@@ -228,7 +272,7 @@ class OAuth2EMail extends Email
                     'provider' => $provider,
                     'clientId' => option('nerdcel.kirby-oauth2-email.client-id'),
                     'clientSecret' => option('nerdcel.kirby-oauth2-email.client-secret'),
-                    'refreshToken' => option('nerdcel.kirby-oauth2-email.refresh-token'),
+                    'refreshToken' => $this->useToken(),
                     'userName' => option('nerdcel.kirby-oauth2-email.email'),
                 ]
             )

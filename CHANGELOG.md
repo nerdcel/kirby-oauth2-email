@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/mokkapps/changelog-generator-demo/compare/v0.3.2...v0.4.0) (2025-11-19)
+
+
+### Features
+
+* implement token management for OAuth2 email service ([439d3a4](https://github.com/mokkapps/changelog-generator-demo/commits/439d3a46d4289eadd872b9550474328dd7fa815d))
+
 ### [0.3.2](https://github.com/mokkapps/changelog-generator-demo/compare/v0.3.1...v0.3.2) (2025-06-05)
 
 ### [0.3.1](https://github.com/mokkapps/changelog-generator-demo/compare/v0.3.0...v0.3.1) (2025-04-30)

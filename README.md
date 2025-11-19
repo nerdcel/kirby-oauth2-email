@@ -46,6 +46,9 @@ Edit your `config.php` and add the following lines:
 ]
 ```
 
+## RefreshToken renewal
+The plugin will automatically renew the refresh token when an email is sent. The new refresh token will be written to `.oauth` file in the root of your Kirby installation. Make sure that the web server has write access to this file.
+
 After you have configured the plugin, you should be able to send emails for example using the dreamform plugin or when you use the 2FA option for the panel.
 
 ## Usefull links

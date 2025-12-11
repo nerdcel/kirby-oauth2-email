@@ -44,7 +44,5 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          files: release.zip
-          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ github.token }}

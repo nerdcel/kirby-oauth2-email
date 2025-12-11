@@ -1,6 +1,6 @@
 {
   "name": "kirby-oauth2-email",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "OAuth2 email login for Kirby",
   "main": "index.js",
   "scripts": {

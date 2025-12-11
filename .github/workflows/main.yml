@@ -42,6 +42,8 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           files: release.zip
           generate_release_notes: true
         env:

@@ -38,10 +38,11 @@ jobs:
         run: |
           zip -r release.zip . -x "*.git*" "*.github*" "tests/*" "phpunit.xml*"
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+      - name: Create a Release
+        id: create_release
+        uses: actions/create-release@v1
         with:
           files: release.zip
           generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}

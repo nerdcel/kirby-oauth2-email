@@ -35,9 +35,21 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
+      - name: Show vendor contents (debug)
+        run: |
+          echo "== vendor directory listing =="
+          ls -la vendor || echo "vendor directory not present"
+
       - name: Create Release Archive
         run: |
-          zip -r release.zip . -x "*.git*" "*.github*" "tests/*" "phpunit.xml*"
+          echo "Creating release.zip (including vendor)"
+          # show vendor so it's clear whether files are present before zipping
+          echo "Vendor preview:"
+          ls -la vendor | sed -n '1,50p' || true
+          # create the archive from the working directory, excluding git and workflow files and tests
+          zip -r release.zip . -x ".git/*" ".github/*" "tests/*" "phpunit.xml*"
+          echo "Archive created. Listing contents (first 200 lines):"
+          unzip -l release.zip | sed -n '1,200p'
 
       - name: Create a Release
         id: create_release

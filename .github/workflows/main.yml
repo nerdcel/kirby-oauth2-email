@@ -47,7 +47,7 @@ jobs:
           echo "Vendor preview:"
           ls -la vendor | sed -n '1,50p' || true
           # create the archive from the working directory, excluding git and workflow files and tests
-          zip -r release.zip . -x ".git/*" ".github/*" "tests/*" "phpunit.xml*"
+          zip -r -X release.zip . -x ".git/*" ".github/*" "tests/*" "phpunit.xml*"
           echo "Archive created. Listing contents (first 200 lines):"
           unzip -l release.zip | sed -n '1,200p'
 
